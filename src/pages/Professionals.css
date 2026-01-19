@@ -1,0 +1,13 @@
+.professionals-page {
+  max-width: 1400px;
+}
+
+.status-active {
+  color: #10B981;
+  font-weight: 600;
+}
+
+.status-inactive {
+  color: #EF4444;
+  font-weight: 600;
+}

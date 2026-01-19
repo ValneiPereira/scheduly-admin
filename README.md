@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# 📊 Scheduly Admin Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dashboard administrativo para gerenciar clientes, profissionais e agendamentos do sistema Scheduly.
 
-## Available Scripts
+## 🚀 Funcionalidades
 
-In the project directory, you can run:
+- **Dashboard**: Visualização de estatísticas gerais do sistema
+- **Clientes**: Listagem, busca e gerenciamento de clientes
+- **Profissionais**: Listagem e gerenciamento de profissionais
+- **Agendamentos**: Visualização e gerenciamento de agendamentos com filtros por status
 
-### `npm start`
+## 📋 Pré-requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js 16+ e npm
+- API Scheduly rodando (padrão: http://localhost:8080)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔧 Instalação
 
-### `npm test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ Configuração
 
-### `npm run build`
+Crie um arquivo `.env` na raiz do projeto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```env
+REACT_APP_API_URL=http://localhost:8080
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🏃 Executar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+O dashboard estará disponível em `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🔐 Autenticação
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para acessar o dashboard, você precisa fazer login com credenciais válidas da API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Nota**: Atualmente, qualquer usuário autenticado pode acessar. Em produção, você deve implementar verificação de role ADMIN no backend e no frontend.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📁 Estrutura do Projeto
 
-## Learn More
+```
+src/
+├── components/       # Componentes reutilizáveis
+│   ├── Layout/       # Layout principal (Sidebar, Header)
+│   └── DataTable.tsx # Tabela de dados genérica
+├── pages/            # Páginas do dashboard
+│   ├── Login.tsx
+│   ├── Dashboard.tsx
+│   ├── Clients.tsx
+│   ├── Professionals.tsx
+│   └── Bookings.tsx
+├── services/         # Serviços de API
+│   ├── auth.service.ts
+│   └── admin.service.ts
+├── config/          # Configurações
+│   └── api.ts       # Cliente Axios configurado
+└── types/           # Tipos TypeScript
+    └── api.ts
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔒 Segurança
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**IMPORTANTE**: Este dashboard é uma versão inicial. Para produção, você deve:
+
+1. Implementar verificação de role ADMIN no backend
+2. Adicionar verificação de role no frontend
+3. Implementar refresh token automático
+4. Adicionar tratamento de erros mais robusto
+5. Implementar paginação nas tabelas
+6. Adicionar mais validações e confirmações
+
+## 📝 Endpoints Utilizados
+
+- `POST /auth/login` - Autenticação
+- `GET /clients` - Listar todos os clientes
+- `GET /clients/search?name={name}` - Buscar clientes
+- `DELETE /clients/{id}` - Excluir cliente
+- `GET /professionals` - Listar todos os profissionais
+- `DELETE /professionals/{id}` - Excluir profissional
+- `GET /bookings` - Listar todos os agendamentos
+- `DELETE /bookings/{id}` - Cancelar agendamento
+
+## 🎨 Melhorias Futuras
+
+- [ ] Gráficos e visualizações (Chart.js ou Recharts)
+- [ ] Exportação de dados (CSV, PDF)
+- [ ] Paginação nas tabelas
+- [ ] Filtros avançados
+- [ ] Detalhes expandidos (modal com informações completas)
+- [ ] Histórico de ações
+- [ ] Notificações em tempo real

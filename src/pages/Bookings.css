@@ -1,0 +1,64 @@
+.bookings-page {
+  max-width: 1400px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #6B7280;
+}
+
+.filter-button:hover {
+  border-color: #1E40AF;
+  color: #1E40AF;
+}
+
+.filter-button.active {
+  background: #1E40AF;
+  border-color: #1E40AF;
+  color: white;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-pending {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.badge-confirmed {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.badge-cancelled {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.badge-completed {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.badge-default {
+  background: #F3F4F6;
+  color: #374151;
+}
