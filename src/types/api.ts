@@ -14,12 +14,15 @@ export interface ProfessionalResponse {
   name: string;
   email: string;
   phone: string;
-  cpf: string;
   address?: AddressResponse;
-  bio?: string;
   avatarUrl?: string;
-  workStartTime: string;
-  workEndTime: string;
+  bio?: string;
+  specialtyIds?: number[];
+  rating?: number;
+  totalReviews?: number;
+  specialization?: string;
+  workStartTime: string; // HH:mm format
+  workEndTime: string; // HH:mm format
   workingDays: string[];
   active: boolean;
   createdAt: string;
@@ -31,13 +34,15 @@ export interface BookingResponse {
   clientId: number;
   professionalId: number;
   serviceId: number;
-  date: string;
-  startTime: string;
-  endTime: string;
+  serviceName?: string;
+  serviceCategory?: string;
+  priceCents?: number;
+  startAt: string; // ISO 8601 format (LocalDateTime from API)
+  endAt: string; // ISO 8601 format (LocalDateTime from API)
   status: 'PENDING' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED';
+  addressId?: number;
   notes?: string;
   createdAt: string;
-  updatedAt: string;
 }
 
 export interface AddressResponse {

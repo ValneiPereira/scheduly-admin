@@ -65,12 +65,22 @@ const Bookings: React.FC = () => {
       key: 'date',
       label: 'Data',
       render: (booking: BookingResponse) =>
-        new Date(booking.date).toLocaleDateString('pt-BR'),
+        new Date(booking.startAt).toLocaleDateString('pt-BR'),
     },
     {
       key: 'startTime',
       label: 'Horário',
-      render: (booking: BookingResponse) => `${booking.startTime} - ${booking.endTime}`,
+      render: (booking: BookingResponse) => {
+        const startTime = new Date(booking.startAt).toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        const endTime = new Date(booking.endAt).toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        return `${startTime} - ${endTime}`;
+      },
     },
     {
       key: 'status',

@@ -4,8 +4,17 @@ import { ClientResponse, ProfessionalResponse, BookingResponse } from '../types/
 export const adminService = {
   // Clientes
   getAllClients: async (): Promise<ClientResponse[]> => {
-    const response = await apiClient.get<ClientResponse[]>('/clients');
-    return response.data;
+    try {
+      console.log('[AdminService] Buscando clientes...');
+      const response = await apiClient.get<ClientResponse[]>('/clients');
+      console.log('[AdminService] Clientes recebidos:', response.data?.length || 0);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error: any) {
+      console.error('[AdminService] Erro ao buscar clientes:', error);
+      console.error('[AdminService] Status:', error?.response?.status);
+      console.error('[AdminService] Data:', error?.response?.data);
+      throw error;
+    }
   },
 
   getClientById: async (id: number): Promise<ClientResponse> => {
@@ -26,8 +35,17 @@ export const adminService = {
 
   // Profissionais
   getAllProfessionals: async (): Promise<ProfessionalResponse[]> => {
-    const response = await apiClient.get<ProfessionalResponse[]>('/professionals');
-    return response.data;
+    try {
+      console.log('[AdminService] Buscando profissionais...');
+      const response = await apiClient.get<ProfessionalResponse[]>('/professionals');
+      console.log('[AdminService] Profissionais recebidos:', response.data?.length || 0);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error: any) {
+      console.error('[AdminService] Erro ao buscar profissionais:', error);
+      console.error('[AdminService] Status:', error?.response?.status);
+      console.error('[AdminService] Data:', error?.response?.data);
+      throw error;
+    }
   },
 
   getProfessionalById: async (id: number): Promise<ProfessionalResponse> => {
@@ -45,8 +63,17 @@ export const adminService = {
     professionalId?: number;
     date?: string;
   }): Promise<BookingResponse[]> => {
-    const response = await apiClient.get<BookingResponse[]>('/bookings', { params });
-    return response.data;
+    try {
+      console.log('[AdminService] Buscando agendamentos...', params);
+      const response = await apiClient.get<BookingResponse[]>('/bookings', { params });
+      console.log('[AdminService] Agendamentos recebidos:', response.data?.length || 0);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error: any) {
+      console.error('[AdminService] Erro ao buscar agendamentos:', error);
+      console.error('[AdminService] Status:', error?.response?.status);
+      console.error('[AdminService] Data:', error?.response?.data);
+      throw error;
+    }
   },
 
   getBookingById: async (id: number): Promise<BookingResponse> => {
